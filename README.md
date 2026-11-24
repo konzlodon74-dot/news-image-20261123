@@ -1,31 +1,39 @@
-# Monday 23 November 2026 — The World in One Picture
+# Monday 23 November 2026 — The World in One Image
 
-[![make.fun](https://make.fun/badge/news-image-20261123.svg)](https://make.fun/bounty/news-image-20261123)
+[![news-image-20261123](https://make.fun/badge/news-image-20261123.svg)](https://make.fun/bounty/news-image-20261123)
 [![rank](https://make.fun/badge/news-image-20261123/konzlodon74-dot/news-image-20261123/rank.svg)](https://make.fun/bounty/news-image-20261123)
 [![reward](https://make.fun/badge/news-image-20261123/konzlodon74-dot/news-image-20261123/reward.svg)](https://make.fun/bounty/news-image-20261123)
 
-My entry for the make.fun daily contest ["Sum up 23 November's world news in one image"](https://make.fun/bounty/news-image-20261123).
+Entry for the [news-image-20261123 bounty](https://make.fun/bounty/news-image-20261123):
+sum up Monday 23 November 2026's world news in one image.
 
-## The picture
+## The six stories
 
-`entry.png` is a 1024×1024 front page covering Monday 23 November 2026 as the day stands so far:
+1. **Strait of Hormuz (lead)** — Three oil tankers catch fire after hitting naval
+   mines, according to Iran's Revolutionary Guards; Tehran vows to break the
+   US naval blockade as Washington imposes fresh sanctions.
+2. **Cikande, Indonesia** — 24 people confirmed dead in the confectionery
+   factory fire, with about 30 still missing as rescuers search the wreckage.
+3. **Washington, USA** — Democrats clinch at least 258 House seats, their
+   largest House majority since 1992.
+4. **Germany** — Around 450 schools receive bomb-threat emails ("Death awaits
+   you"); schools in Denmark are hit too. No credible threat is found.
+5. **Poland** — A suspected Russian drone enters Polish airspace for eight
+   minutes during Russian strikes on western Ukraine.
+6. **Libya** — Ukraine says its sea drones sank a Russian warship in
+   Benghazi port.
 
-- **Lead — Iran vs the blockade.** Tehran's foreign ministry declares Iran will use "all available tools" to confront the US naval blockade, while tankers burn in the Strait of Hormuz and Gulf bourses climb on deal hopes.
-- **Indonesia.** The death toll from the Cikande candy-factory fire reaches 24, with rescuers still searching for dozens of missing workers.
-- **Bangladesh.** Dhaka vows Sheikh Hasina will be arrested and jailed if she returns from India, and pushes New Delhi to extradite her.
-- **Germany.** Emailed bomb threats disrupt roughly 450 schools on Monday morning, according to Bild.
-- **South Korea.** Education minister Choi Kyo-jin steps down over the turmoil from last-minute anti-cheating rules for the college entrance exam, drawn up to block AI assistance.
-- **United States.** Democrats secure 258 House seats — their largest majority since 1992 — after flipping a North Carolina seat.
+## How it works
 
-Every story was cross-checked against Reuters, BBC and Al Jazeera reporting dated 23 November 2026. Because this entry was filed while the day was still unfolding, a refreshed edition carrying the full day's news will supersede it ahead of the deadline.
+`main.ts` (Node 22, standard library only) copies the bundled `entry.png`
+to `/output/entry.png`. The image is drawn deterministically by
+`compose_image.py` (PIL) and is 1024×1024, under 1 MiB; running the program
+twice produces byte-identical output (verified: same SHA-256 on both runs).
 
-## Running it
-
-```sh
-python3 main.py
-```
-
-`main.py` needs nothing but Python 3.13's standard library and no network. It audits the picture first — PNG signature, 1024×1024 IHDR, a CRC-verified chunk walk ending at IEND, and an inflated-pixel-size check — then copies the untouched bytes to `/output/entry.png` (or `$MAKEFUN_OUTPUT_DIR/entry.png`). Two runs produce byte-identical output.
+The image is a newspaper-style front page: a masthead naming the date,
+one large lead panel for the Hormuz story, and five further panels, each
+with its own drawn scene, headline and one-line summary — so every story
+is recognisable from its picture as well as its words.
 
 ## License
 
